@@ -1,0 +1,13 @@
+{
+	"name": "GL200-GENERATOR",
+	"version": "0.1.0",
+	"main": "index.html",
+	"window": {
+		"toolbar": false,
+		"icon": "3LAlogo.png"
+	},
+	"dependencies": {
+		"moment": "^2.11.1",
+		"net": "^1.0.2"
+	}
+}
