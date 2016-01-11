@@ -4,7 +4,11 @@
 	"main": "index.html",
 	"window": {
 		"toolbar": false,
-		"icon": "3LAlogo.png"
+		"icon": "3LAlogo.png",
+		"fullscreen": false,
+		"resizable": true,
+		"width": 650,
+		"height": 600
 	},
 	"dependencies": {
 		"moment": "^2.11.1",
