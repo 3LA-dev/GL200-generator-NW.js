@@ -37,12 +37,15 @@ function conectSocket() {
 function gtpna() {
 	var uniqID = $('#IMEI').val();
 	var deviceName = $('#deviceName').val();
+	var protocolVersion = $('#protocolVersion').val();
 	var timeSend = moment().format('YYYYMMDDHHmmss');
 	var countNumber = 1001;
 	if (uniqID != '')
 		global.datGL200.uniqueID = uniqID;
 	if (deviceName != '')
 		global.datGL200.deviceName = deviceName;
+	if (protocolVersion != '')
+		global.datGL200.protocolVersion = protocolVersion;
 	var tramaGTPNA = [];
 	tramaGTPNA.push('+RESP:GTPNA');
 	tramaGTPNA.push(global.datGL200.protocolVersion);
@@ -54,4 +57,5 @@ function gtpna() {
 	$(".consol").append(">> " + tramaGTPNA + '<br>');
 	$('#IMEI').attr("placeholder", global.datGL200.uniqueID);
 	$('#deviceName').attr("placeholder", global.datGL200.deviceName);
+	$('#protocolVersion').attr("placeholder", global.datGL200.protocolVersion);
 }

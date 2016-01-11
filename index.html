@@ -18,23 +18,19 @@
 			<div class="col s12">
 				<ul class="collapsible popout" data-collapsible="accordion">
 					<li>
-						<div class="collapsible-header active"><i class="material-icons">language</i>Socket TCP</div>
+						<div class="collapsible-header active"><i class="material-icons">language</i>Server Conection</div>
 						<div class="collapsible-body">
 							<div class="container">
 								<div class="row">
 									<form action="" class="col s12 m12 l12">
 										<div class="row">
-											<div class="input-field col s12 m6 l4">
+											<div class="input-field col s12 m4 l3">
 												<input placeholder="127.0.0.1" id="hostSocket" type="text" class="validate">
 												<label for="hostSocket">Host:</label>
 											</div>
-											<div class="input-field col s12 m6 l4">
+											<div class="input-field col s12 m4 l3">
 												<input placeholder="8090" id="portSocket" type="text" class="validate">
 												<label for="portSocket">Port:</label>
-											</div>
-											<div class="col s12 m6 l4">
-
-												<button class="btn waves-effect waves-light" type="button" name="Conect" onclick="conectSocket()">Conect</button>
 											</div>
 										</div>
 									</form>
@@ -43,22 +39,29 @@
 						</div>
 					</li>
 					<li>
-						<div class="collapsible-header"><i class="material-icons">power_settings_new</i>+RESP:GTPNA: Power on report</div>
+						<div class="collapsible-header"><i class="material-icons">phonelink_setup</i>Device Configuration</div>
 						<div class="collapsible-body">
 							<div class="container">
 								<div class="row">
 									<form action="" class="col s12 m12 l12">
 										<div class="row">
-											<div class="input-field col s12 m6 l4">
-												<input placeholder="IMEI(15)" id="IMEI" type="text" class="validate">
+											<div class="input-field col s12 m4 l3">
+												<input type="text" placeholder="02010B" id="protocolVersion" class="validate">
+												<label for="protocolVersion">Protocol Version:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="135790246811220" id="IMEI" type="text" class="validate">
 												<label for="IMEI">Unique ID:</label>
 											</div>
-											<div class="input-field col s12 m6 l4">
-												<input placeholder="GL200(10)" id="deviceName" type="text" class="validate">
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="LoremGL200" id="deviceName" type="text" class="validate">
 												<label for="deviceName">Device name:</label>
 											</div>
-											<div class="col s12 m6 l4">
-												<button class="btn waves-effect waves-light" type="button" name="sendGTPNA" onclick="gtpna()">Enviar</button>
+											<div class="input-field col s12 m4 l3">
+												<label for="batterypercentage">Battery percentage:</label>
+												<p class="range-field">
+													<input type="range" id="batterypercentage" min="0" max="100" class="validate" />
+												</p>
 											</div>
 									</form>
 									</div>
@@ -66,44 +69,105 @@
 							</div>
 					</li>
 					<li>
-						<div class="collapsible-header"><i class="material-icons">power_settings_new</i>+RESP:GTPNA: Power on report</div>
+						<div class="collapsible-header"><i class="material-icons">my_location</i>GPS Data</div>
 						<div class="collapsible-body">
 							<div class="container">
 								<div class="row">
 									<form action="" class="col s12 m12 l12">
 										<div class="row">
-											<div class="input-field col s12 m6 l4">
-												<input placeholder="IMEI(15)" id="IMEI" type="text" class="validate">
-												<label for="IMEI">Unique ID:</label>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="YYYYMMDDHHMMSS" id="GPSUTCtime" type="text" class="validate">
+												<label for="GPSUTCtime">GPS UTC time:</label>
 											</div>
-											<div class="input-field col s12 m6 l4">
-												<input placeholder="GL200(10)" id="deviceName" type="text" class="validate">
-												<label for="deviceName">Device name:</label>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="127.5" id="Speed" type="text" class="validate">
+												<label for="Speed">Speed:</label>
 											</div>
-											<div class="col s12 m6 l4">
-												<button class="btn waves-effect waves-light" type="button" name="sendGTPNA" onclick="gtpna()">Enviar</button>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="-98.707299" id="Longitude" type="text" class="validate">
+												<label for="Longitude">Longitude:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="20.102827" id="Latitude" type="text" class="validate">
+												<label for="Latitude">Latitude:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="00340.5" id="Altitude" type="text" class="validate">
+												<label for="Altitude">Altitude:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<label for="GPSaccuracy">GPS accuracy:</label>
+												<p class="range-field">
+													<input type="range" id="GPSaccuracy" min="1" max="50" class="validate" />
+												</p>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<label for="Azimuth">Azimuth:</label>
+												<p class="range-field">
+													<input type="range" id="Azimuth" min="0" max="350" class="validate" />
+												</p>
 											</div>
 									</form>
 									</div>
 								</div>
 							</div>
 					</li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons">settings_phone</i>Mobile settings</div>
+						<div class="collapsible-body">
+							<div class="container">
+								<div class="row">
+									<form action="" class="col s12 m12 l12">
+										<div class="row">
+											<div class="input-field col s12 m4 l3">
+												<input type="text" placeholder="0334" id="MCC" class="validate">
+												<label for="MCC">MCC:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="0020" id="MNC" type="text" class="validate">
+												<label for="MNC">MNC:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="FFFF" id="LAC" type="text" class="validate">
+												<label for="LAC">LAC:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="1234" id="CellID" type="text" class="validate">
+												<label for="CellID">Cell ID:</label>
+											</div>
+									</form>
+									</div>
+								</div>
+							</div>
+					</li>
+					<li>
+						<div class="collapsible-header"><i class="material-icons">loop</i>GTFRI Configuration</div>
+						<div class="collapsible-body">
+						</div>
+					</li>
 				</ul>
 				</div>
 				</div>
-			</div>
-			<footer class="page-footer grey darken-4">
-				<div class="row">
-					<div class="col s12">
-						<h5 class="white-text">Console:</h5>
-						<p class="consol grey-text text-lighten-4"></p>
-					</div>
+				<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+					<a class="btn-floating btn-large teal lighten-1">+RESP</a>
+					<ul>
+						<li><a onclick="conectSocket()" class="btn-floating green"><i class="material-icons">language</i></a></li>
+						<li><a onclick="gtpna()" class="btn-floating red"><i class="material-icons">power_settings_new</i></a></li>
+					</ul>
 				</div>
-				<div class="footer-copyright">
-					<div class="container">
-					</div>
 				</div>
-			</footer>
+				<footer class="page-footer grey darken-4">
+					<div class="row">
+						<div class="col s12">
+							<h5 class="white-text">Console:</h5>
+							<p class="consol grey-text text-lighten-4"></p>
+						</div>
+					</div>
+					<div class="footer-copyright">
+						<div class="container">
+						</div>
+					</div>
+				</footer>
 </body>
 
 </html>
