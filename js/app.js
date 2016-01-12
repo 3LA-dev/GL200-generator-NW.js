@@ -116,7 +116,7 @@ function getAllInput() {
 function sendReport() {
 	var inputReport = $('#selectReport').val();
 	getAllInput();
-	global.tramaBaseReport[5] = inputReport[inputReport.length - 1];
+	global.tramaBaseReport[4] = inputReport[inputReport.length - 1];
 	var tramaSend = "+RESP:" + inputReport.substring(0, inputReport.length - 1) + "," + global.tramaBaseReport
 	global.socket.write('' + tramaSend);
 	$(".consol").append(">>" + tramaSend + '<br>');
