@@ -9,6 +9,7 @@ $(document).ready(function () {
 //::::::::::::::::::::::::::::::::: Node_Modules
 var net = require('net');
 var moment = require('moment');
+global.createSocket = false;
 // ::::::::::::::::::::::::::::::::  Data GPS Default
 global.datGL200 = {
 	host: '127.0.0.1',
@@ -32,21 +33,28 @@ global.datGL200 = {
 };
 //:::::::::::::::::::::::::::::::::: Conect Socket TCP
 function conectSocket() {
-	var hostSocket = $('#hostSocket').val();
-	var portSocket = $('#portSocket').val();
-	if (hostSocket != "")
-		global.datGL200.host = hostSocket;
-	//global.datGL200.host = hostSocket || ;
-	if (portSocket != "")
-		global.datGL200.port = portSocket;
-	global.socket = net.connect({
-		host: global.datGL200.host,
-		port: global.datGL200.port
-	}, function () {
-		$(".consol").append(">> Conect: Host: " + global.datGL200.host + " Port: " + global.datGL200.port + "<br>");
-		$('#hostSocket').attr("placeholder", global.datGL200.host);
-		$('#portSocket').attr("placeholder", global.datGL200.port);
-	});
+	if (global.createSocket) {
+		global.socket.destroy();
+		global.createSocket = false;
+		$(".consol").append(">> Disconnect: Host: " + global.datGL200.host + " Port: " + global.datGL200.port + "<br>");
+	} else {
+		global.createSocket = true;
+		var hostSocket = $('#hostSocket').val();
+		var portSocket = $('#portSocket').val();
+		if (hostSocket != "")
+			global.datGL200.host = hostSocket;
+		//global.datGL200.host = hostSocket || ;
+		if (portSocket != "")
+			global.datGL200.port = portSocket;
+		global.socket = net.connect({
+			host: global.datGL200.host,
+			port: global.datGL200.port
+		}, function () {
+			$(".consol").append(">> Conect: Host: " + global.datGL200.host + " Port: " + global.datGL200.port + "<br>");
+			$('#hostSocket').attr("placeholder", global.datGL200.host);
+			$('#portSocket').attr("placeholder", global.datGL200.port);
+		});
+	}
 };
 
 //:::::::::::::::::::::::::::::::::::: Send +RESP:GTPNA

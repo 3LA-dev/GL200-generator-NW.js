@@ -193,12 +193,12 @@
 	</main>
 	<footer class="page-footer grey darken-4">
 		<div class="row">
-			<div class=" col s12" style="overflow:scroll;">
-				<h5 class="white-text">Console:</h5>
+			<div class=" col s12" style="overflow:hidden;">
+				<h6 class="white-text">Console:</h6>
 				<p class="consol grey-text text-lighten-4"></p>
 			</div>
 		</div>
-		<input placeholder=">>" id="tramaInput" type="text" class="validate footer-copyright">
+		<input placeholder=">> Trama..." id="tramaInput" type="text" class="validate footer-copyright" onkeypress="if (event.keyCode == 13) consoleInput()">
 	</footer>
 </body>
 
