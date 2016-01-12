@@ -53,6 +53,7 @@ function conectSocket() {
 			$(".consol").append(">> Conect: Host: " + global.datGL200.host + " Port: " + global.datGL200.port + "<br>");
 			$('#hostSocket').attr("placeholder", global.datGL200.host);
 			$('#portSocket').attr("placeholder", global.datGL200.port);
+			gtpna();
 		});
 	}
 };

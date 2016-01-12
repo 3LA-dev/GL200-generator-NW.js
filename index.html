@@ -20,7 +20,7 @@
 			<div class="col s12">
 				<ul class="collapsible popout" data-collapsible="accordion">
 					<li>
-						<div class="collapsible-header"><i class="material-icons">language</i>Server Conection</div>
+						<div class="collapsible-header"><i class="material-icons">phonelink_setup</i>Device Configuration</div>
 						<div class="collapsible-body">
 							<div class="container">
 								<div class="row">
@@ -34,19 +34,6 @@
 												<input placeholder="8090" id="portSocket" type="text" class="validate">
 												<label for="portSocket">Port:</label>
 											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons">phonelink_setup</i>Device Configuration</div>
-						<div class="collapsible-body">
-							<div class="container">
-								<div class="row">
-									<form action="" class="col s12 m12 l12">
-										<div class="row">
 											<div class="input-field col s12 m4 l3">
 												<input type="text" placeholder="02010B" id="protocolVersion" class="validate">
 												<label for="protocolVersion">Protocol Version:</label>
@@ -60,15 +47,32 @@
 												<label for="deviceName">Device name:</label>
 											</div>
 											<div class="input-field col s12 m4 l3">
+												<input type="text" placeholder="0334" id="MCC" class="validate">
+												<label for="MCC">MCC:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="0020" id="MNC" type="text" class="validate">
+												<label for="MNC">MNC:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="FFFF" id="LAC" type="text" class="validate">
+												<label for="LAC">LAC:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
+												<input placeholder="1234" id="CellID" type="text" class="validate">
+												<label for="CellID">Cell ID:</label>
+											</div>
+											<div class="input-field col s12 m4 l3">
 												<label for="batterypercentage">Battery percentage:</label>
 												<p class="range-field">
 													<input type="range" id="batterypercentage" min="0" max="100" class="validate" />
 												</p>
 											</div>
+										</div>
 									</form>
-									</div>
 								</div>
 							</div>
+						</div>
 					</li>
 					<li>
 						<div class="collapsible-header"><i class="material-icons">my_location</i>GPS Data</div>
@@ -113,62 +117,6 @@
 													<input type="range" id="Azimuth" min="0" max="350" class="validate" />
 												</p>
 											</div>
-									</form>
-									</div>
-								</div>
-							</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons">settings_phone</i>Mobile settings</div>
-						<div class="collapsible-body">
-							<div class="container">
-								<div class="row">
-									<form action="" class="col s12 m12 l12">
-										<div class="row">
-											<div class="input-field col s12 m4 l3">
-												<input type="text" placeholder="0334" id="MCC" class="validate">
-												<label for="MCC">MCC:</label>
-											</div>
-											<div class="input-field col s12 m4 l3">
-												<input placeholder="0020" id="MNC" type="text" class="validate">
-												<label for="MNC">MNC:</label>
-											</div>
-											<div class="input-field col s12 m4 l3">
-												<input placeholder="FFFF" id="LAC" type="text" class="validate">
-												<label for="LAC">LAC:</label>
-											</div>
-											<div class="input-field col s12 m4 l3">
-												<input placeholder="1234" id="CellID" type="text" class="validate">
-												<label for="CellID">Cell ID:</label>
-											</div>
-									</form>
-									</div>
-								</div>
-							</div>
-					</li>
-					<li>
-						<div class="collapsible-header"><i class="material-icons">report_problem</i>Report</div>
-						<div class="collapsible-body">
-							<div class="container">
-								<div class="row">
-									<form action="" class="col s12 m12 l12">
-										<div class="row">
-											<div class="input-field col s12 m6 l6">
-												<select id="selectReport">
-													<optgroup label="Speed +RESP:GTSPD">
-														<option value="GTSPD0">Outside the speed range.</option>
-														<option value="GTSPD1">Inside the speed range.</option>
-													</optgroup>
-													<optgroup label="Geo-Fence. +RESP:GTGEO,">
-														<option value="GTGEO0">Exit the corresponding Geo-Fence.</option>
-														<option value="GTGEO1">Enter the corresponding Geo-Fence.</option>
-													</optgroup>
-												</select>
-												<label>Select Report:</label>
-											</div>
-											<div class="input-field col s12 m6 l6">
-												<a class="waves-effect waves-light btn" onclick="sendReport()">Send Report</a>
-											</div>
 										</div>
 									</form>
 								</div>
@@ -181,15 +129,52 @@
 						</div>
 					</li>
 				</ul>
-				</div>
-				</div>
-				<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-					<a class="btn-floating btn-large teal lighten-1">+RESP</a>
-					<ul>
-						<li><a onclick="conectSocket()" class="btn-floating green"><i class="material-icons">language</i></a></li>
-						<li><a onclick="gtpna()" class="btn-floating red"><i class="material-icons">power_settings_new</i></a></li>
-					</ul>
-				</div>
+				<ul class="collapsible" data-collapsible="accordion">
+					<li>
+						<div class="collapsible-header active"><i class="material-icons">report_problem</i>Send Report</div>
+						<div class="collapsible-body">
+							<div class="container">
+								<div class="row">
+									<form action="" class="col s12 m12 l12">
+										<div class="row">
+											<div class="input-field col s12">
+												<select id="selectReport">
+													<optgroup label="SOS +RESP:GTSOS">
+														<option value="GTSOS0">SOS Report</option>
+													</optgroup>
+													<optgroup label="Speed +RESP:GTSPD">
+														<option value="GTSPD0">Outside the speed range.</option>
+														<option value="GTSPD1">Inside the speed range.</option>
+													</optgroup>
+													<optgroup label="Geo-Fence. +RESP:GTGEO">
+														<option value="GTGEO0">Exit the corresponding Geo-Fence.</option>
+														<option value="GTGEO1">Enter the corresponding Geo-Fence.</option>
+													</optgroup>
+													<optgroup label="Motion sensor +RESP:GTNMR">
+														<option value="GTNMR0">The state of the device changed from motion to rest.</option>
+														<option value="GTNMR1">The state of the device changed from rest to motion.</option>
+													</optgroup>
+												</select>
+												<label>Select Report:</label>
+											</div>
+											<div class="input-field col s4 offset-s4">
+												<a class="waves-effect waves-light btn" onclick="sendReport()">Send Report</a>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+			<a class="btn-floating btn-large teal lighten-1">+RESP</a>
+			<ul>
+				<li><a onclick="conectSocket()" class="btn-floating green"><i class="material-icons">power_settings_new</i></a></li>
+			</ul>
+		</div>
 	</main>
 	<footer class="page-footer grey darken-4">
 		<div class="row">
