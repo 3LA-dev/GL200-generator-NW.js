@@ -107,7 +107,7 @@ function getAllInput() {
 	global.tramaBaseReport.push($('#CellID').val() || global.datGL200.CellID);
 	global.tramaBaseReport.push($('#OdoMileage').val() || global.datGL200.OdoMileage);
 	global.tramaBaseReport.push($('#batterypercentage').val() || global.datGL200.batterypercentage);
-	global.tramaBaseReport.push(''); // I/O status <=4 0-FFFF A hexadecimal value to indicate the I/O status.
+	global.tramaBaseReport.push('0'); // I/O status <=4 0-FFFF A hexadecimal value to indicate the I/O status.
 	global.tramaBaseReport.push(moment().format('YYYYMMDDHHmmss')); //Send Time
 	global.tramaBaseReport.push('FFFF$'); //Count Number + Tail
 };
@@ -127,4 +127,5 @@ function consoleInput() {
 	var tramaInput = $('#tramaInput').val();
 	global.socket.write('' + tramaInput);
 	$(".consol").append(">>" + tramaInput + '<br>');
+	$('#tramaInput').val('');
 };
