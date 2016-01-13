@@ -11,3 +11,5 @@ This application can connect to a TCP server and send frames general position re
 - +RESP:GTFRI Report position.
 
 The program allows you to set all the data involved in the generation of the frames of the reports, in addition to any other frame insert and send in your console section.
+
+> This application is based in the **Track Air Interface Protocol Revision: 1.13**
